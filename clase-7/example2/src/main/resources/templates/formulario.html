@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Usuarios</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-top: 20px;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="email"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .error {
+            color: red;
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background: #fff;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+<h2>Añadir Usuario</h2>
+<form th:action="@{/agregarUsuario}" th:object="${usuario}" method="post">
+    <label>Nombre:</label>
+    <input type="text" th:field="*{nombre}" />
+    <div th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="error"></div>
+
+    <label>Email:</label>
+    <input type="email" th:field="*{email}" />
+    <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error"></div>
+
+    <label>Categoría:</label>
+    <select th:field="*{categoria}">
+        <option value="">Selecciona una categoría</option>
+        <option value="Admin">Admin</option>
+        <option value="Usuario">Usuario</option>
+    </select>
+    <div th:if="${#fields.hasErrors('categoria')}" th:errors="*{categoria}" class="error"></div>
+
+    <input type="submit" value="Añadir" />
+</form>
+
+<h2>Lista de Usuarios</h2>
+<ul>
+    <li th:each="usuario : ${usuarios}">
+        <span th:text="${usuario.nombre} + ' - ' + ${usuario.email} + ' - ' + ${usuario.categoria}"></span>
+    </li>
+</ul>
+</body>
+</html>

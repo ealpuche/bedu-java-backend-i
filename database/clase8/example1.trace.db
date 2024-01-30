@@ -1,0 +1,3 @@
+2024-02-21 20:23:40.526279-06:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TASK" not found (this database is empty); SQL statement:
+select * from task [42104-224]

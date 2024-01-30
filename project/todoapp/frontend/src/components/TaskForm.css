@@ -1,0 +1,44 @@
+/* src/components/TaskForm.css */
+.taskForm {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.taskForm form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.taskForm input, .taskForm textarea, .taskForm button {
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.taskForm textarea {
+    resize: vertical;
+}
+
+.taskForm button {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.taskForm button:hover {
+    background-color: #0056b3;
+}
+
+.backButton {
+    background-color: #6c757d; /* Gris */
+}
+
+.backButton:hover {
+    background-color: #5a6268;
+}
